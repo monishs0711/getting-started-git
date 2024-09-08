@@ -1,0 +1,73 @@
+#! /opt/homebrew/Cellar/icarus-verilog/12.0/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/system.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/v2005_math.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/va_math.vpi";
+S_0x13d609040 .scope module, "twotofourdecoder_tb" "twotofourdecoder_tb" 2 1;
+ .timescale 0 0;
+v0x13d61fab0_0 .var "A", 0 0;
+v0x13d61fb40_0 .var "B", 0 0;
+v0x13d61fbd0_0 .net "i", 3 0, L_0x13d6202a0;  1 drivers
+S_0x13d6076d0 .scope module, "uut" "twotofourdecoder" 2 9, 3 1 0, S_0x13d609040;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 1 "B";
+    .port_info 2 /OUTPUT 4 "i";
+L_0x13d61fca0 .functor NOT 1, v0x13d61fab0_0, C4<0>, C4<0>, C4<0>;
+L_0x13d61fd70 .functor NOT 1, v0x13d61fb40_0, C4<0>, C4<0>, C4<0>;
+L_0x13d61fe20 .functor AND 1, L_0x13d61fca0, L_0x13d61fd70, C4<1>, C4<1>;
+L_0x13d61ff30 .functor NOT 1, v0x13d61fab0_0, C4<0>, C4<0>, C4<0>;
+L_0x13d61ffa0 .functor AND 1, L_0x13d61ff30, v0x13d61fb40_0, C4<1>, C4<1>;
+L_0x13d6200c0 .functor NOT 1, v0x13d61fb40_0, C4<0>, C4<0>, C4<0>;
+L_0x13d6201b0 .functor AND 1, v0x13d61fab0_0, L_0x13d6200c0, C4<1>, C4<1>;
+L_0x13d620440 .functor AND 1, v0x13d61fab0_0, v0x13d61fb40_0, C4<1>, C4<1>;
+v0x13d6091b0_0 .net "A", 0 0, v0x13d61fab0_0;  1 drivers
+v0x13d61f2e0_0 .net "B", 0 0, v0x13d61fb40_0;  1 drivers
+v0x13d61f380_0 .net *"_ivl_10", 0 0, L_0x13d61ff30;  1 drivers
+v0x13d61f440_0 .net *"_ivl_12", 0 0, L_0x13d61ffa0;  1 drivers
+v0x13d61f4f0_0 .net *"_ivl_16", 0 0, L_0x13d6200c0;  1 drivers
+v0x13d61f5e0_0 .net *"_ivl_18", 0 0, L_0x13d6201b0;  1 drivers
+v0x13d61f690_0 .net *"_ivl_2", 0 0, L_0x13d61fca0;  1 drivers
+v0x13d61f740_0 .net *"_ivl_23", 0 0, L_0x13d620440;  1 drivers
+v0x13d61f7f0_0 .net *"_ivl_4", 0 0, L_0x13d61fd70;  1 drivers
+v0x13d61f900_0 .net *"_ivl_6", 0 0, L_0x13d61fe20;  1 drivers
+v0x13d61f9b0_0 .net "i", 3 0, L_0x13d6202a0;  alias, 1 drivers
+L_0x13d6202a0 .concat8 [ 1 1 1 1], L_0x13d61fe20, L_0x13d61ffa0, L_0x13d6201b0, L_0x13d620440;
+    .scope S_0x13d609040;
+T_0 ;
+    %vpi_call 2 18 "$dumpfile", "waves.vcd" {0 0 0};
+    %vpi_call 2 19 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x13d609040 {0 0 0};
+    %vpi_call 2 22 "$monitor", "At time %t, A = %b, B = %b, i = %b", $time, v0x13d61fab0_0, v0x13d61fb40_0, v0x13d61fbd0_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x13d61fab0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x13d61fb40_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x13d61fab0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x13d61fb40_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x13d61fab0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x13d61fb40_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x13d61fab0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x13d61fb40_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 31 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "test_tb.v";
+    "test.v";
